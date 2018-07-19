@@ -21,41 +21,40 @@ if (en > 0) ds_list_add(levelList, en); // make a list of level.
 
 var en = deckPower;
 var levelList = ds_list_create();
-for(var i = 0 ; i < ds_list_size(levelList); i++){
+for(var i = 0 ; i < deckBribe - 1; i++){
     ds_list_add(levelList, 1);
     en--;
 }
 
-while(en != 0){
+while (en != 0){
     var rand = irandom(ds_list_size(levelList) - 1);
     var entry = levelList[|rand];
-    if((entry + 1) > levelLimit) continue;
+    if(entry == levelLimit) continue;
     levelList[|rand]++;
     en--;
 }
 
-visualize_list(levelList);
+//visualize_list(levelList);
 
 var totalCards = ds_grid_height(DungeonDB);
-var levelArray = ds_list_create();
-
-for(var i = 1 ; i < totalCards; i++){
-    var index = asset_get_index(DungeonDB[# INDEX, i]);
-    if (index == -1) show_error("Could not load following index: " + DungeonDB[# INDEX, i], true);
-    var currentLevel = ds_list_find_index(levelList, DungeonDB[# LEVEL, i]);
-    if(currentLevel == -1) {show_message_async("Could not found a card of following level: " + string(currentLevel)); continue;}
-    levelArray[|currentLevel] = array_add(levelArray[|currentLevel], index);
-}
 
 for(var i = 0; i < ds_list_size(levelList); i++){
-    var level = levelList[|i];
-    wex = levelArray[|level]; // wex is array. levelList and levelArray are not.
-    var cardPick = wex[irandom(array_length_1d(wex))];
+    var currentLevel = levelList[|i];
+    var imsiArray = -1;
+    for(var j = 1; j < totalCards; j++){
+       var index = asset_get_index(DungeonDB[# INDEX, j]);
+       if (index == -1) show_error("Could not load following index: " + DungeonDB[# INDEX, j], true);
+       var level = real(DungeonDB[# LEVEL, j]);
+       if(level != currentLevel) continue;
+       imsiArray = array_add(imsiArray, index);
+    }
+    //visualize_1dArray(imsiArray);
+    var size = array_length_1d(imsiArray);
+    var cardPick = imsiArray[irandom(size - 1)];
     ds_list_add(yourDeck, cardPick);
 }
 
 ds_list_destroy(levelList);
-ds_list_destroy(levelArray);
 
 return yourDeck;
 

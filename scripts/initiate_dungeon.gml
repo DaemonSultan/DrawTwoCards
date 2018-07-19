@@ -9,15 +9,15 @@ faceDownList = ds_list_create();
 revealedList = ds_list_create();
 discardPile = ds_list_create();
 
-var yourDeck = ds_list_create();
+yourDeck = ds_list_create();
 yourDeck = build_dungeonDeck(playerLevel);
 var playerDeck = ds_list_create();
 ds_list_copy(playerDeck, myDeck);
 
-var imsiDeck = ds_list_merge(playerDeck, yourDeck); // this includes object indices
-var deckSize = ds_list_size(imsiDeck);
-ds_list_destroy(yourDeck);
+var imsiDeck = ds_list_create();
+imsiDeck = ds_list_merge(playerDeck, yourDeck); // this includes object indices
 
+var deckSize = ds_list_size(imsiDeck);
 
 dungeonDeck = ds_list_create(); // this includes instance ids (these are very different!!)
 for(var i = 0; i < deckSize; i++){
@@ -25,7 +25,7 @@ for(var i = 0; i < deckSize; i++){
     dungeonDeck[|i] = card;
 }
 
-ds_list_destroy(imsiDeck);
+
 ds_list_shuffle(dungeonDeck);
 
 for(var i = 0; i < dungeonSize ; i++){
@@ -42,3 +42,6 @@ with(you){
     maxActions = 2;
     maxAtq = 1 + str;
 }
+
+ds_list_destroy(yourDeck);
+ds_list_destroy(imsiDeck);

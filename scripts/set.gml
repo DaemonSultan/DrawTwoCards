@@ -4,8 +4,7 @@
 var card = noone;
 for(var i = 0; i < ds_list_size(dungeonDeck); i++){
     if(dungeonDeck[|i].status == INDECK){
-        card = dungeonDeck[i];
-
+        card = dungeonDeck[|i];
     }
 }
 

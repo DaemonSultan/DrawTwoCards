@@ -139,7 +139,7 @@ draw_set_valign(fa_middle);
 if(status == FACEDOWN or status ==  REVEALED){
     visible = true;
     x = BFIELD_LEFT + gridx * (BFIELD_WIDTH / n);
-    y = BFIELD_RIGHT + gridy * (BFIELD_HEIGHT / n);
+    y = BFIELD_TOP + gridy * (BFIELD_HEIGHT / n);
     
 }else{
     visible = false;

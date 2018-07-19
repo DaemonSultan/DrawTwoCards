@@ -49,7 +49,7 @@ name = PlayerDB[# NAME, ROW];
 description = PlayerDB[# DESCRIPTION, ROW];
 
 color = get_color(object_get_name(object_index));
-costType = PlayerDB[# COSTTYPE, ROW];
+costType = constant(PlayerDB[# COSTTYPE, ROW]);
 cost = real(PlayerDB[# COST, ROW]);
 
 attribute = get_attribute(PlayerDB[# ATTRIBUTE, ROW]);

@@ -10,7 +10,7 @@ switch(str){
     case "DUPL": return DUPL;
     case "MONO": return MONO;
     case "STRENGTH": return STRENGTH;
-    case "AGILTIY": return AGILITY;
+    case "AGILITY": return AGILITY;
     case "INTELLIGENCE": return INTELLIGENCE;
     case "ATQ": return ATQ;
     case "HEALTH": return HEALTH;

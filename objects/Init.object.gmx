@@ -71,7 +71,6 @@ room_goto_next();
           <argument>
             <kind>1</kind>
             <string>ds_list_destroy(myDeck);
-ds_list_destroy(yourDeck);
 </string>
           </argument>
         </arguments>
