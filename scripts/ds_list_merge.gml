@@ -1,4 +1,4 @@
-//ds_list_merge(from, to);
+///ds_list_merge(from, to);
 //add 'from' list to 'to' list, then shuffle 'em.
 var from = argument0;
 var to = argument1;

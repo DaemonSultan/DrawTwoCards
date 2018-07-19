@@ -3,6 +3,76 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="5" name="datafiles">
+    <datafile>
+      <name>StarterDeck.csv</name>
+      <exists>-1</exists>
+      <size>459</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>StarterDeck.csv</filename>
+    </datafile>
+    <datafile>
+      <name>DungeonDB.csv</name>
+      <exists>-1</exists>
+      <size>824</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>DungeonDB.csv</filename>
+    </datafile>
+    <datafile>
+      <name>BossDB.csv</name>
+      <exists>-1</exists>
+      <size>48</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>BossDB.csv</filename>
+    </datafile>
+    <datafile>
+      <name>PlayerDB.csv</name>
+      <exists>-1</exists>
+      <size>2496</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>PlayerDB.csv</filename>
+    </datafile>
+  </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -64,18 +134,31 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="scripts_readFiles">
+      <script>scripts\get_attribute.gml</script>
+      <script>scripts\get_color.gml</script>
+      <script>scripts\constant.gml</script>
+      <script>scripts\display_error.gml</script>
+      <script>scripts\attrCheck.gml</script>
+      <script>scripts\csv_load.gml</script>
+    </scripts>
     <scripts name="scripts_skills&amp;spells">
+      <script>scripts\basicValidate.gml</script>
       <script>scripts\affordable.gml</script>
+      <script>scripts\skell_pressed.gml</script>
     </scripts>
     <scripts name="scripts_upkeep&amp;cleanup">
       <scripts name="scripts_buildDecks">
         <script>scripts\ds_list_merge.gml</script>
+        <script>scripts\array_add.gml</script>
         <script>scripts\build_dungeonDeck.gml</script>
       </scripts>
       <script>scripts\initiate_dungeon.gml</script>
       <script>scripts\dungeon_destroy.gml</script>
     </scripts>
     <scripts name="scripts_attacks&amp;damage">
+      <script>scripts\persist.gml</script>
+      <script>scripts\canAttack.gml</script>
       <script>scripts\hero_attack.gml</script>
     </scripts>
     <scripts name="scipts_phases">
@@ -83,12 +166,14 @@
       <script>scripts\set.gml</script>
       <script>scripts\skip_phase.gml</script>
     </scripts>
-    <scripts name="scripts_obsolete?">
-      <script>scripts\constant.gml</script>
-      <script>scripts\array_add.gml</script>
-    </scripts>
     <scripts name="scripts_ingameMisc">
       <script>scripts\ef_number.gml</script>
+    </scripts>
+    <scripts name="script_debugging">
+      <script>scripts\visualize_1dArray.gml</script>
+      <script>scripts\visualize_2dArray.gml</script>
+      <script>scripts\visualize_grid.gml</script>
+      <script>scripts\visualize_list.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -127,13 +212,41 @@
           </objects>
           <object>objects\Door</object>
         </objects>
+        <objects name="Collectible">
+          <objects name="Skells">
+            <object>objects\Bash</object>
+            <object>objects\Sap</object>
+            <object>objects\LightningBolt</object>
+            <object>objects\Fury</object>
+            <object>objects\KeenSense</object>
+            <object>objects\Brilliance</object>
+            <object>objects\Breakthrough</object>
+            <object>objects\AvoidFate</object>
+            <object>objects\Outwit</object>
+            <object>objects\BodyCheck</object>
+            <object>objects\Sharpen</object>
+            <object>objects\Decimate</object>
+            <object>objects\Defend</object>
+            <object>objects\Engage</object>
+            <object>objects\Dismember</object>
+            <object>objects\Frisk</object>
+            <object>objects\SixthSense</object>
+            <object>objects\BoneCrack</object>
+            <object>objects\Illuminate</object>
+            <object>objects\ManaShield</object>
+            <object>objects\ForceOfWill</object>
+            <object>objects\Electrolyze</object>
+            <object>objects\Wildfire</object>
+          </objects>
+        </objects>
       </objects>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\InitRoom</room>
     <room>rooms\DungeonRoom</room>
   </rooms>
-  <constants number="51">
+  <constants number="86">
     <constant name="___PHASES___">________</constant>
     <constant name="INITIATE">-1</constant>
     <constant name="PL_UPKEEP">0</constant>
@@ -143,14 +256,10 @@
     <constant name="DN_UPKEEP">4</constant>
     <constant name="DN_MAIN">5</constant>
     <constant name="DN_END">6</constant>
-    <constant name="___PARAMS___">________</constant>
-    <constant name="NAME">0</constant>
-    <constant name="LEVEL">1</constant>
-    <constant name="TYPE">2</constant>
     <constant name="___AFFINITY___">________</constant>
-    <constant name="PLAYER">0</constant>
+    <constant name="NONE">0</constant>
     <constant name="DUNGEON">1</constant>
-    <constant name="NONE">2</constant>
+    <constant name="PLAYER">2</constant>
     <constant name="___TYPES___">________</constant>
     <constant name="CREATURE">1</constant>
     <constant name="TRAP">2</constant>
@@ -184,7 +293,46 @@
     <constant name="___CTYPE___">________</constant>
     <constant name="MANA">0</constant>
     <constant name="HEALTH">1</constant>
-    <constant name="ATQ">2</constant>
+    <constant name="ATQ">4</constant>
+    <constant name="___EVENT___">________</constant>
+    <constant name="EV_CLICK">11</constant>
+    <constant name="EV_REVEAL">0</constant>
+    <constant name="EV_CAST">1</constant>
+    <constant name="EV_ACTIVATE">2</constant>
+    <constant name="EV_ATTACK">3</constant>
+    <constant name="___DunDB___">________</constant>
+    <constant name="INDEX">0</constant>
+    <constant name="NAME">1</constant>
+    <constant name="LEVEL">2</constant>
+    <constant name="TYPE">3</constant>
+    <constant name="_ATQ">4</constant>
+    <constant name="DEF">5</constant>
+    <constant name="DESCRIPTION">6</constant>
+    <constant name="ATTRIBUTE">7</constant>
+    <constant name="___PlaDB___">________</constant>
+    <constant name="_NAME">1</constant>
+    <constant name="COLOR1">2</constant>
+    <constant name="COLOR2">3</constant>
+    <constant name="COSTTYPE">4</constant>
+    <constant name="COST">5</constant>
+    <constant name="_DESCRIPTION">6</constant>
+    <constant name="_ATTRIBUTE">7</constant>
+    <constant name="TARGETS">8</constant>
+    <constant name="MAXTARGETS">9</constant>
+    <constant name="___ATTRS___">________</constant>
+    <constant name="_NONE">0</constant>
+    <constant name="FLSH">1</constant>
+    <constant name="ETHR">2</constant>
+    <constant name="CMSY">4</constant>
+    <constant name="SLOW">8</constant>
+    <constant name="DUPL">16</constant>
+    <constant name="PRST">32</constant>
+    <constant name="___TARGET___">________</constant>
+    <constant name="__NONE">0</constant>
+    <constant name="TR_FACEDOWN">1</constant>
+    <constant name="TR_CREATURE">2</constant>
+    <constant name="TR_TRAP">4</constant>
+    <constant name="TR_SKELL">8</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

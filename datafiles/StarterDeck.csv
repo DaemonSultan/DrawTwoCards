@@ -1,0 +1,7 @@
+NAME,SLOT1,SLOT2,SLOT3,SLOT4,SLOT5,SLOT6,SLOT7,SLOT8
+STR1,Bash,Fury,Fury,Defend,NONE,NONE,NONE,NONE
+AGI1,Sap,KeenSense,KeenSense,Engage,NONE,NONE,NONE,NONE
+INT1,LightningBolt,ForceOfWill,ForceOfWill,Brilliance,NONE,NONE,NONE,NONE
+STR2,BodyCheck,Sharpen,Decimate,Defend,Defend,Bash,Bash,Fury
+AGI2,Frisk,Bonecrack,Dismember,Engage,Engage,Sap,Sap,KeenSense
+INT2,Illuminate,ManaShield,Wildfire,Brilliance,Brilliance,LightningBolt,LightningBolt,ForceOfWill

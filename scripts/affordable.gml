@@ -1,55 +1,45 @@
 #define affordable
-//affordable(Spell);
+///affordable(Spell);
+//Dedicated to You.
 //returns a boolean whether target spell is affordable.
 var spell = argument0;
-switch(spell.costType){
-    case MANA:
-        if(spell.cost > mp) return false;
-        else return true;
-    break;
-    case HEALTH:
-        if(spell.cost > hp) return false;
-        else return true;
-    break;
-    case ATQ:
-        if(spell.cost > atq) return false;
-        else return true;
-    break;
+if(spell.type == SPELL){
+    switch(spell.costType){
+        case MANA: if(spell.cost > mp) return "cantAfford";
+        case HEALTH: if(spell.cost > hp) return "cantAfford";
+        case ATQ: if(spell.cost > atq) return "cantAfford";
+    }
 }
+if(actions <= 0) return "noActions";
+return true;
 
 #define afford
-//afford(Spell)
+///afford(Spell);
+//dedicated to You
+//spend cost of a spell.
 var spell = argument0;
-switch(spell.costType){
-    case MANA:
-        mp -= spell.cost;
-    break;
-    case HEALTH:
-        hp -= spell.cost;
-    break;
-    case ATQ:
-        atq -= spell.cost;
-        fatigue += spell.cost;
-    break;
+if(spell.type == SPELL){
+    switch(spell.costType){
+        case MANA:
+            mp -= spell.cost;
+        break;
+        case HEALTH:
+            hp -= spell.cost;
+        break;
+        case ATQ:
+            atq -= spell.cost;
+            fatigue += spell.cost;
+        break;
+    }
 }
-
-#define isValid
-//isValid(spell, target);
-var target = argument1;
-switch(argument0.object_index){
-    case You: // Any Revealed Creature
-        if(target.type == CREATURE and target.status == REVEALED) return true;
-        else return false;
-    break;
-}
+actions--;
 
 #define cancel
-//cancel(); // put some parameters to show proper message.
+///cancel(); 
+// put some parameters to show proper message.
+//cancel an action.
 show_message_async("Action Cancelled.");
-if(casting != noone){
-    casting.target = noone;
-    casting.targetCount = 0;
-    casting = noone;
-}
+if(casting != noone) casting = noone;
+targetArray = noone;
+targetCount = 0;
 doing = NOTHING;
-break;

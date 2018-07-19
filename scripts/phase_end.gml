@@ -6,6 +6,7 @@ switch(phase){
     case INITIATE: // init Dungeon
         initiate_dungeon(3); // 3 is n; and is imsi
         phase = PL_UPKEEP;
+        phase_end();
     break;
     case PL_UPKEEP:
         phase = PL_MAIN;
@@ -18,7 +19,6 @@ switch(phase){
     case PL_END:
         phase = DN_UNTAP;
         phase_start();
-        
     break;
     case DN_UNTAP:
         phase = DN_UPKEEP;
@@ -61,12 +61,15 @@ switch(phase){
         if!(ds_list_size(faceDownList) > 0) phase_end();
     break;
     case PL_END:
-        // do something
+        atq -= buff;
+        buff = 0;
+        phase_end();
     break;
     case DN_UNTAP:
         for(var i = 0; i < ds_list_size(revealedList); i++){
             revealedList[|i].sickness -= (revealedList[|i].sickness > 0);
         }
+        phase_end();
     break;
     case DN_UPKEEP:
         var size = ds_list_size(faceDownList);
@@ -85,6 +88,7 @@ switch(phase){
                 with(enemy) trap_activate();
             }
         }
+        phase_end();
     break;
     case DN_END:
         var rsize = ds_list_size(revealedList);
@@ -95,5 +99,6 @@ switch(phase){
                 set();
             }
         }
+        phase_end();
     break;
 }

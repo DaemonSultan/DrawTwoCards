@@ -1,0 +1,25 @@
+INDEX,NAME,COLOR1,COLOR2,COSTTYPE,COST,DESCRIPTION,ATTRIBUTE,TARGETS,MAXTARGETS
+Bash,Bash,STRENGTH,MONO,NONE,0,Deal damage to target creature and you gain armor equal to your ATQ.,NONE,TR_CREATURE,1
+Sap,Sap,AGILITY,MONO,NONE,0,Shuffle target creature into Dungeon deck.,NONE,TR_CREATURE,1
+LightningBolt,Lightning Bolt,INTELLIGENCE,MONO,MANA,3,Deal 4 damage to target creature. Persist.,PRST,TR_CREATURE,1
+Fury,Fury,STRENGTH,MONO,NONE,0,Gain +3 ATQ Until end of your turn. Gain one Action Point.,NONE,NONE,0
+KeenSense,Keen Sense,AGILITY,MONO,NONE,0,Reveal two cards. Gain two Action Points.,NONE,TR_FACEDOWN,2
+Brilliance,Brilliance,INTELLIGENCE,MONO,NONE,0,Gain two maximum Mana.,NONE,NONE,0
+Breakthrough,Breakthrough,STRENGTH,AGILITY,ATQ,3,Deal damage to each creature equal to your ATQ.,NONE,NONE,0
+AvoidFate,Avoid Fate,AGILITY,INTELLIGENCE,NONE,0,Destroy target unrevealed card.,NONE,TR_FACEDOWN,1
+Outwit,Outwit,INTELLIGENCE,STRENGTH,MANA,4,Destroy all traps.,NONE,NONE,0
+BodyCheck,Body Check,STRENGTH,MONO,NONE,0,Reveal a card$c if it's a creature$c gain one Action Point. Persist.,PRST,TR_FACEDOWN,1
+Sharpen,Sharpen,STRENGTH,MONO,MANA,2,Gain +1 ATQ. Persist.,PRST,NONE,0
+Stomp,Stomp,STRENGTH,MONO,NONE,0,Duplicate. Deal 1 damage to each creature. ,DUPL,NONE,0
+Decimate,Decimate,STRENGTH,MONO,HEALTH,4,Deal 4 damage to four target creatures.,NONE,TR_CREATURE,4
+Defend,Defend,STRENGTH,MONO,NONE,0,Gain 8 Armour.,NONE,NONE,0
+Engage,Engage,AGILITY,MONO,NONE,0,Flash. Gain two Action Points.,FLSH,NONE,0
+Dismember,Dismember,AGILITY,MONO,NONE,0,Deal 5 damage to target creature. It gets -5 ATQ.,NONE,TR_CREATURE,1
+Frisk,Frisk,AGILITY,MONO,NONE,0,Reveal a card$c if it's a trap$c gain 8 Armour.,NONE,TR_FACEDOWN,1
+SixthSense,Sixth Sense,AGILITY,MONO,MANA,5,Reveal three cards$c Gain three Action Points.,NONE,TR_FACEDOWN,3
+Bonecrack,Bonecrack,AGILITY,MONO,ATQ,2,Deal X damage to target creature and it gets -X ATQ$c Where X is your ATQ. Persist.,PRST,TR_CREATURE,1
+Illuminate,Illuminate,INTELLIGENCE,MONO,MANA,4,Reveal four cards.,NONE,TR_FACEDOWN,4
+ManaShield,Mana Shield,INTELLIGENCE,MONO,MANA,3,Gain 6 Armour$c gain one Action Point.,NONE,NONE,0
+ForceOfWill,Force of Will,INTELLIGENCE,MONO,NONE,0,Destroy target trap.,NONE,TR_TRAP,1
+Electrolyze,Electrolyze,INTELLIGENCE,MONO,NONE,0,Flash$c duplicate. Deal 2 damage to target creature.,FLSH*DUPL,TR_CREATURE,1
+Wildfire,Wildfire,INTELLIGENCE,MONO,MANA,7,Deal 7 damage to a random creature. Repeat this process.,NONE,NONE,0

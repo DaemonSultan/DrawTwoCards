@@ -28,6 +28,8 @@
             <string>globalvar turn,  phase;
 phase = INITIATE;
 turn = 0;
+
+phase_end();
 </string>
           </argument>
         </arguments>

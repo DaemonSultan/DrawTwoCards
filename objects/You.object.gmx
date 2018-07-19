@@ -44,7 +44,10 @@ fatigue = -1;
 doing = NOTHING;
 casting = noone;
 armour = 0;
+buff = 0;
 
+targetArray = noone;
+targetCount = 0;
 </string>
           </argument>
         </arguments>
@@ -115,7 +118,7 @@ else if(doing == ATTACK or doing == CAST or doing == ACTIVATE){
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="53">
+    <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -132,96 +135,47 @@ else if(doing == ATTACK or doing == CAST or doing == ACTIVATE){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var cursorOn = instance_place(mouse_x, mouse_y, Clickable);
-if(cursorOn != noone){
-    switch(phase){
-        case PL_UPKEEP:
-            if(object_is_ancestor(cursorOn.object_index, Permanent)){
-                if(flips &gt; 0 and cursorOn.status == FACEDOWN){
-                    reveal(cursorOn);
-                    flips--;
-                }
-            }
-            else if(object_is_ancestor(cursorOn.object_index, Button)){
-                skip_phase();
-            }
-        break;
-        case PL_MAIN:
-            if(object_is_ancestor(cursorOn.object_index, Permanent)) {
-                if!(cursorOn.status == REVEALED or cursorOn.status == FACEDOWN) break;
-                if(doing == NOTHING and actions &gt; 0){
-                    if(cursorOn.type == SKILL){
-                        if(cursorOn.maxTargets == 0){
-                            with(cursorOn){
-                                event_user(1);
-                            }
-                            actions--;
-                            discard(cursorOn);
-                        }
-                        else{
-                            doing = CAST;
-                            casting = cursorOn;
-                        }
-                    }
-                    else if(cursorOn.type == SPELL){
-                        if(affordable(cursorOn)){
-                            if(cursorOn.maxTargets == 0){
-                                with(cursorOn){
-                                    event_user(1);
-                                }
-                                afford(cursorOn);
-                                actions--;
-                                discard(cursorOn);
-                            }
-                            else{
-                                doing = CAST;
-                                casting = cursorOn;
-                            }
-                        }
-                        else{
-                            cancel();
-                        }
-                    }
-                }
-                else if(doing == CAST){
-                    if(isValid(casting, cursorOn)){
-                        var wellCast = false;
-                        with(casting){
-                            target[targetCount] = cursorOn;
-                            targetCount++;
-                            if(targetCount == maxTargets){
-                                event_user(1);
-                                wellCast = true;
-                            }
-                        }
-                        if(wellCast) {
-                            if(casting.type == SPELL) afford(casting);
-                            discard(casting);
-                            casting = noone;
-                            actions--;
-                        }
-                    }
-                    else{
-                        cancel();
-                    }
-                }
-                else if(doing == ATTACK){
-                    if(cursorOn.incorporeal) cancel();
-                    hero_attack(cursorOn);
-                    actions--;
-                }
-            }
-            else if(cursorOn == id){
-                if(doing != NOTHING or disarmed != 0) cancel();
-                doing = ATTACK;
-            }
-            else if(object_is_ancestor(cursorOn.object_index, Button)){
-                skip_phase();
-            }
-        break;
-    }
+            <string>if(phase != PL_MAIN) exit;
+switch(doing){
+    case NOTHING:
+        doing = ATTACK;
+    break;
+    case ATTACK:
+    case CAST:
+        cancel();
+    break;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
 
+var str = "";
+
+if(casting != noone){
+    str = string(targetCount) + "/" + string(casting.maxTargets);
+    draw_set_color(c_black);
+    draw_text(mouse_x, mouse_y, str);
+}
 </string>
           </argument>
         </arguments>

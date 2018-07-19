@@ -23,39 +23,6 @@
         <relative>0</relative>
         <isnot>0</isnot>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>affinity = DUNGEON;
-type = TRAP;
-
-level = 1;
-
-sickness = 1;
-baseSickness = 1;
-
-name[lang.EN] = "Transgender";
-name[lang.KO] = "트랜스젠더";
-
-description[lang.EN] = "Shuffle all revealed player cards into the dungeon deck.";
-description[lang.KO] = "공개된 플레이어의 카드를 모두 덱에 섞어 넣습니다.";
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="7" enumb="12">
       <action>

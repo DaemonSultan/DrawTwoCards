@@ -42,28 +42,202 @@
             <string>affinity = DUNGEON;
 type = CREATURE;
 
-level = -1;
-atq = -1;
-def = -1;
-baseAtq = -1;
-baseDef = -1;
+var ROW = find_header(DungeonDB, object_get_name(object_index));
+
+level = DungeonDB[# LEVEL, ROW];
+
+baseAtq = DungeonDB[# ATQ, ROW];
+baseDef = DungeonDB[# DEF, ROW];
+atq = baseAtq;
+def = baseDef;
+
+attribute = get_attribute(DungeonDB[# ATTRIBUTE, ROW])
 
 damageTaken = 0;
-sickness = -1;
-baseSickness = -1;
 
-clumsy = false;
 friendly = false;
-incorporeal = false;
 
-name[lang.EN] = "";
-name[lang.KO] = "";
-
-description[lang.EN] = "";
-name[lang.KO] = "";
+name = DungeonDB[# NAME, ROW];
+description = DungeonDB[# DESCRIPTION, ROW];
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>You.doing</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>CAST</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>status</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>FACEDOWN</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(You){
+    switch(phase){
+        case PL_MAIN:
+            if(doing != ATTACK) break;
+            var cond = canAttack(other.id);
+            if(!is_string(cond)){
+                hero_attack(other.id);
+            }
+            else{
+                display_error(cond);
+            }
+        break;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="7" enumb="13">
@@ -84,6 +258,73 @@ name[lang.KO] = "";
           <argument>
             <kind>1</kind>
             <string>///whenever this attacks, (passive);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+draw_set_circle_precision(32);
+var radius = string_width("2"); // imsi. as always..
+
+if(status == FACEDOWN){
+    draw_sprite(CardBackS, 0, x, y);
+}else{
+    draw_sprite(sprite_index, 0, x, y);
+    draw_set_color(c_red);
+    draw_circle(bbox_left, bbox_top, radius, false);
+    draw_circle(bbox_left, bbox_bottom, radius, false);
+    draw_circle(bbox_right, bbox_bottom, radius, false);
+    draw_set_color(c_orange);
+    draw_circle(bbox_left, bbox_top, radius-1, false);
+    draw_circle(bbox_left, bbox_bottom, radius-1, false);
+    draw_circle(bbox_right, bbox_bottom, radius-1, false);
+    draw_set_color(c_black);
+    draw_text(bbox_left, bbox_top, level);
+    if(atq &gt; baseAtq) draw_set_color(c_green);
+    else if (atq == baseAtq) draw_set_color(c_black);
+    else draw_set_color(c_red);
+    draw_text(bbox_left, bbox_bottom, atq);
+    if(damageTaken &gt; 0) draw_set_color(c_red);
+    else if (def == baseDef) draw_set_color(c_black);
+    else draw_set_color(c_green);
+    draw_text(bbox_right, bbox_bottom, def - damageTaken);
+    
+}
+
 </string>
           </argument>
         </arguments>

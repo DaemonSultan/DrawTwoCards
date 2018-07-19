@@ -27,9 +27,65 @@
             <kind>1</kind>
             <string>//Whenever you cast a noncreature spell, you may have Riddleform become a 3/3 sphinx creature with flying in addition to its other types until end of turn. 2U : Scry 1.
 status = INDECK;
+attribute = 0;
 
 gridx = -1;
 gridy = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(You){
+    if(doing != CAST){
+        switch(phase){
+            case PL_UPKEEP:
+                if(other.status != FACEDOWN) break;
+                if(flips &gt; 0){
+                    flips--;
+                    reveal(other.id);
+                }
+            break;
+        }
+    }
+    else{ // if we're casting something...
+        switch(phase){
+            case PL_MAIN:
+                var targ = casting.thisTargets;
+                var result = basicValidate(targ, other.id);
+                if(!result) {display_error("invalidTarget"); cancel();}
+                targetArray[targetCount++] = other.id;
+                if(targetCount == casting.maxTargets){
+                    with(casting){
+                        event_user(EV_CAST);
+                    }
+                    afford(casting);
+                    discard(casting);
+                    targetArray = noone;
+                    targetCount = 0;
+                    doing = NOTHING;
+                }
+            break;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -76,8 +132,7 @@ gridy = -1;
           <argument>
             <kind>1</kind>
             <string>var n = sqrt(dungeonSize);
-draw_set_circle_precision(32);
-var radius = string_width("2"); // imsi. as always..
+
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
@@ -90,70 +145,6 @@ if(status == FACEDOWN or status ==  REVEALED){
     visible = false;
     x = 0;
     y = 0;
-}
-
-switch(status){
-    case FACEDOWN:
-        draw_sprite(CardBackS, 0, x, y);
-    break;
-    case REVEALED:
-        switch(type){
-            case CREATURE:
-                draw_sprite(sprite_index, 0, x,y);
-                draw_set_color(c_red);
-                draw_circle(bbox_left, bbox_top, radius, false);
-                draw_circle(bbox_left, bbox_bottom, radius, false);
-                draw_circle(bbox_right, bbox_bottom, radius, false);
-                draw_set_color(c_orange);
-                draw_circle(bbox_left, bbox_top, radius-1, false);
-                draw_circle(bbox_left, bbox_bottom, radius-1, false);
-                draw_circle(bbox_right, bbox_bottom, radius-1, false);
-                draw_set_color(c_black);
-                draw_text(bbox_left, bbox_top, level);
-                draw_text(bbox_left, bbox_bottom, atq);
-                draw_text(bbox_right, bbox_bottom, def);
-            break;
-            case TRAP:
-                draw_sprite(sprite_index, 0, x,y);
-                draw_set_color(c_red);
-                draw_circle(bbox_left, bbox_top, radius, false);
-                draw_set_color(c_orange);
-                draw_circle(bbox_left, bbox_top, radius-1, false);
-                draw_set_color(c_black);
-                draw_text(bbox_left, bbox_top, level);
-            break;
-            case SKILL:
-                draw_sprite(sprite_index, 0, x,y);
-            break;
-            case SPELL:
-                draw_sprite(sprite_index, 0, x,y);
-                var outCol, inCol;
-                switch(color){
-                    case STRENGTH:
-                        outCol = c_maroon;
-                        inCol = c_red;
-                    break;
-                    case AGILITY:
-                        outCol = c_green;
-                        inCol = c_lime;
-                    break;
-                    case INTELLIGENCE:
-                        outCol = c_navy;
-                        inCol = c_blue;
-                    break;
-                }
-                draw_set_color(outCol);
-                draw_circle(bbox_right, bbox_top, radius, false);
-                draw_set_color(inCol);
-                draw_circle(bbox_right, bbox_top, radius-1, false);
-                draw_set_color(c_black);
-                draw_text(bbox_right, bbox_top, cost);
-            break;
-            case NEUTRAL:
-                draw_sprite(sprite_index, 0, x, y);
-            break;
-        }
-    break;
 }
 </string>
           </argument>

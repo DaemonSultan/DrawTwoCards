@@ -23,48 +23,6 @@
         <relative>0</relative>
         <isnot>0</isnot>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>affinity = DUNGEON;
-type = CREATURE;
-
-level = 1;
-atq = 1;
-def = 1;
-baseAtq = 1;
-baseDef = 1;
-
-damageTaken = 0;
-sickness = 1;
-baseSickness = 1;
-
-clumsy = false;
-friendly = false;
-incorporeal = true;
-
-name[lang.EN] = "Sans";
-name[lang.KO] = "샌즈";
-
-description[lang.EN] = "Flash, ethereal";
-name[lang.KO] = "섬광, 무형";
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="7" enumb="13">
       <action>

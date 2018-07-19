@@ -1,4 +1,4 @@
-//skip_phase();
+///skip_phase();
 if(phase == PL_UPKEEP){
     if(flips == maxFlips){
         show_message_async("You must flip at least one card.");

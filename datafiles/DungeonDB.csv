@@ -1,0 +1,15 @@
+INDEX,NAME,LEVEL,TYPE,ATQ,DEF,DESCRIPTION,ATTRIBUTE
+Sans,Sans,1,CREATURE,1,1,Flash$c Ethereal,FLSH*ETHR
+Papyrus,Papyrus,1,CREATURE,2,1,NONE,NONE
+Toriel,Toriel,1,CREATURE,3,2,Clumsy,CMSY
+Asgore,Asgore,2,CREATURE,2,3,NONE,NONE
+Asriel,Asriel,2,CREATURE,1,2,Passive: Gain +1 ATQ.,NONE
+Muffet,Muffet,2,CREATURE,4,1,Ambush: Muffet deals 2 damage to you.,NONE
+Undyne,Undyne,3,CREATURE,2,6,Deathrattle: You gain 6 Armour.,NONE
+Gaster,Gaster,3,CREATURE,4,2,Ambush: Gaster stuns you.,NONE
+Alphys,Alphys,4,CREATURE,3,3,Ethereal,ETHR
+Metaton,Metaton,5,CREATURE,6,6,Clumsy,CMSY
+Lesbian,Lesbian,1,TRAP,0,0,Enemy creatures gain +1 ATQ.,NONE
+Gay,Gay,2,TRAP,0,0,You lose all Armour.,NONE
+Bisexual,Bisexual,3,TRAP,0,0,Deal 6 damage to you.,NONE
+Transgender,Transgender,4,TRAP,0,0,Shuffle all player cards into Dungeon deck.,NONE

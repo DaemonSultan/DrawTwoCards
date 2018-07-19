@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -29,12 +29,25 @@
 globalvar myDeck, encounteredBosses, playerLevel;
 encounteredBosses = ds_list_create();
 myDeck = ds_list_create();
+randomize();
 
 enum lang{
     EN,
     KO
 }
 global.language = lang.EN;
+
+globalvar DungeonDB, PlayerDB, ArtifactDB, BossDB, StarterDeck;
+DungeonDB = csv_load("DungeonDB.csv");
+PlayerDB = csv_load("PlayerDB.csv");
+//ArtifactDB = csv_load("ArtifactDB.csv");
+BossDB = csv_load("BossDB.csv");
+StarterDeck = csv_load("StarterDeck.csv");
+
+myDeck = initialize_playerDeck(1, 1, 1); // imsi!! you really need to get_real.
+
+playerLevel = 1;
+room_goto_next();
 </string>
           </argument>
         </arguments>

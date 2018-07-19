@@ -1,4 +1,4 @@
-//dungeon_destroy();
+///dungeon_destroy();
 with(Permanent){
     instance_destroy();
 }
