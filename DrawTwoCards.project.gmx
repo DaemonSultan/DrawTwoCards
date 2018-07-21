@@ -79,6 +79,7 @@
     <sprites name="TempCards">
       <sprite>sprites\FuckermanS</sprite>
       <sprite>sprites\tempHeroS</sprite>
+      <sprite>sprites\LoktarS</sprite>
       <sprites name="Creatures">
         <sprite>sprites\MetatonS</sprite>
         <sprite>sprites\AlphysS</sprite>
@@ -162,6 +163,7 @@
       <script>scripts\hero_attack.gml</script>
     </scripts>
     <scripts name="scipts_phases">
+      <script>scripts\phase_start.gml</script>
       <script>scripts\phase_end.gml</script>
       <script>scripts\set.gml</script>
       <script>scripts\skip_phase.gml</script>

@@ -43,7 +43,7 @@
 type = TRAP;
 var ROW = find_header(DungeonDB, object_get_name(object_index));
 
-level = DungeonDB[# LEVEL, ROW];
+level = real(DungeonDB[# LEVEL, ROW]);
 name = DungeonDB[# NAME, ROW];
 description = DungeonDB[# DESCRIPTION, ROW];
 attribute = get_attribute(DungeonDB[# ATTRIBUTE, ROW]);
@@ -155,7 +155,7 @@ var radius = string_width("2"); // imsi. as always..
 if(status == FACEDOWN){
     draw_sprite(CardBackS, 0, x, y);
 }else{
-    draw_sprite(sprite_index, 0, x,y);
+    draw_sprite(sprite_index, 0, x, y);
     draw_set_color(c_red);
     draw_circle(bbox_left, bbox_top, radius, false);
     draw_set_color(c_orange);

@@ -167,7 +167,13 @@ switch(doing){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>if(doing == ATTACK){
+    sprite_index = LoktarS;
+}else{
+    sprite_index = tempHeroS;
+}
+
+draw_self();
 
 var str = "";
 
@@ -175,7 +181,34 @@ if(casting != noone){
     str = string(targetCount) + "/" + string(casting.maxTargets);
     draw_set_color(c_black);
     draw_text(mouse_x, mouse_y, str);
+    draw_text(mouse_x, mouse_y + 50, casting.name);
 }
+draw_text(x, bbox_bottom + 30, "HP: " + string(hp) + "/" + string(maxHp));
+draw_text(x, bbox_bottom + 60, "Actions left: " + string(actions));
+draw_text(x, bbox_bottom + 90, "Mana: " + string(mp) + "/" + string(maxMp));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>visualize_grid(battlefield);
 </string>
           </argument>
         </arguments>

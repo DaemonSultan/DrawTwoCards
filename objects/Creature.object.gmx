@@ -44,10 +44,10 @@ type = CREATURE;
 
 var ROW = find_header(DungeonDB, object_get_name(object_index));
 
-level = DungeonDB[# LEVEL, ROW];
+level = real(DungeonDB[# LEVEL, ROW]);
 
-baseAtq = DungeonDB[# ATQ, ROW];
-baseDef = DungeonDB[# DEF, ROW];
+baseAtq = real(DungeonDB[# ATQ, ROW]);
+baseDef = real(DungeonDB[# DEF, ROW]);
 atq = baseAtq;
 def = baseDef;
 
@@ -321,7 +321,8 @@ if(status == FACEDOWN){
     if(damageTaken &gt; 0) draw_set_color(c_red);
     else if (def == baseDef) draw_set_color(c_black);
     else draw_set_color(c_green);
-    draw_text(bbox_right, bbox_bottom, def - damageTaken);
+    var hitpoint = (def - damageTaken);
+    draw_text(bbox_right, bbox_bottom, string(hitpoint));
     
 }
 

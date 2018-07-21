@@ -30,7 +30,7 @@ gravity = 0.1;
 gravity_direction = 270;
 color = c_white;
 value = -1;
-alarm[0] = 30;
+alarm[0] = 60;
 </string>
           </argument>
         </arguments>

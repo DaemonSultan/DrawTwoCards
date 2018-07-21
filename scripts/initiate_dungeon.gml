@@ -37,6 +37,7 @@ var int = 1, agi = 1, str = 1; // imsi. as always.
 
 with(you){
     maxHp = 30; // imsi. Do something!
+    hp = maxHp;
     maxMp = 1 + int;
     maxFlips = 1 + agi;
     maxActions = 2;

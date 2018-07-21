@@ -31,6 +31,54 @@ attribute = 0;
 
 gridx = -1;
 gridy = -1;
+
+debug = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>debug = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>debug++;
 </string>
           </argument>
         </arguments>
@@ -136,15 +184,21 @@ gridy = -1;
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
-if(status == FACEDOWN or status ==  REVEALED){
+if(status == FACEDOWN or status == REVEALED){
     visible = true;
-    x = BFIELD_LEFT + gridx * (BFIELD_WIDTH / n);
-    y = BFIELD_TOP + gridy * (BFIELD_HEIGHT / n);
-    
+    x = BFIELD_LEFT + gridx * ((BFIELD_WIDTH) / n);
+    y = BFIELD_TOP + gridy * ((BFIELD_HEIGHT) / n);
 }else{
     visible = false;
     x = 0;
     y = 0;
+}
+
+if(debug &gt; 0 and status == REVEALED){
+    draw_text(x + 20, y - 80, name);
+}
+if(debug == (room_speed*3)){
+    show_message_async(description);
 }
 </string>
           </argument>
