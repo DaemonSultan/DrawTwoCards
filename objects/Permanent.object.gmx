@@ -32,7 +32,8 @@ attribute = 0;
 gridx = -1;
 gridy = -1;
 
-debug = 0;
+debug = false;
+mouseIn = 0;
 </string>
           </argument>
         </arguments>
@@ -55,7 +56,7 @@ debug = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>debug = 0;
+            <string>debug = false;
 </string>
           </argument>
         </arguments>
@@ -78,7 +79,7 @@ debug = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>debug++;
+            <string>debug = true;
 </string>
           </argument>
         </arguments>
@@ -194,11 +195,14 @@ if(status == FACEDOWN or status == REVEALED){
     y = 0;
 }
 
-if(debug &gt; 0 and status == REVEALED){
+if(debug == true and status == REVEALED){
     draw_text(x + 20, y - 80, name);
-}
-if(debug == (room_speed*3)){
-    show_message_async(description);
+    mouseIn++;
+    if(mouseIn == room_speed*2){
+        show_message_async(description);
+    }
+}else{
+    mouseIn = 0;
 }
 </string>
           </argument>

@@ -33,7 +33,7 @@ switch(phase){
     break;
     case DN_UPKEEP:
         var size = ds_list_size(faceDownList);
-        if!(size > 0) 
+        if!(size > 0) break;
         reveal(faceDownList[|irandom(size-1)]);
     break;
     case DN_MAIN:
@@ -42,7 +42,7 @@ switch(phase){
         if!(size > 0) break;
         for(var i = 0; i < size; i++){
             var enemy = revealedList[|i];
-            if(enemy.affinity != DUNGEON) break;
+            if(enemy.affinity != DUNGEON) continue;
             if(enemy.type == CREATURE){
                 with(enemy) creature_attack();
             }

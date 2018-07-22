@@ -12,7 +12,7 @@ switch(argument0){
         str = "It's ethereal; You cannot attack it.";
     break;
     case "cantAfford":
-        str = "You don't have enough resource to cast that spell."
+        str = "You don't have enough resource to cast that spell.";
     break;
     case "invalidTarget":
         str = "Target is not vaild.";

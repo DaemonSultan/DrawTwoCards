@@ -135,6 +135,16 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="scripts_permanents">
+      <script>scripts\set.gml</script>
+      <script>scripts\reveal.gml</script>
+      <script>scripts\discard.gml</script>
+      <script>scripts\shuffle_deck.gml</script>
+      <script>scripts\shuffle_card.gml</script>
+      <script>scripts\search_blank.gml</script>
+      <script>scripts\reset.gml</script>
+      <script>scripts\persist.gml</script>
+    </scripts>
     <scripts name="scripts_readFiles">
       <script>scripts\get_attribute.gml</script>
       <script>scripts\get_color.gml</script>
@@ -158,14 +168,17 @@
       <script>scripts\dungeon_destroy.gml</script>
     </scripts>
     <scripts name="scripts_attacks&amp;damage">
-      <script>scripts\persist.gml</script>
       <script>scripts\canAttack.gml</script>
+      <script>scripts\creature_attack.gml</script>
+      <script>scripts\stun.gml</script>
+      <script>scripts\deal_damage.gml</script>
+      <script>scripts\trap_activate.gml</script>
+      <script>scripts\gain_armour.gml</script>
       <script>scripts\hero_attack.gml</script>
     </scripts>
     <scripts name="scipts_phases">
       <script>scripts\phase_start.gml</script>
       <script>scripts\phase_end.gml</script>
-      <script>scripts\set.gml</script>
       <script>scripts\skip_phase.gml</script>
     </scripts>
     <scripts name="scripts_ingameMisc">
