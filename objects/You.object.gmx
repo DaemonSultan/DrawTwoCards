@@ -37,14 +37,14 @@ actions = -1;
 maxActions = -1;
 atq = -1;
 maxAtq = -1;
-disarmed = -1;
-fatigue = -1;
 
 
 doing = NOTHING;
 casting = noone;
 armour = 0;
 buff = 0;
+disarmed = 0;
+fatigue = 0;
 
 targetArray = noone;
 targetCount = 0;
@@ -79,9 +79,6 @@ targetCount = 0;
     case PL_MAIN:
         if (doing == NOTHING){
             casting = noone;
-        }
-        if (actions == 0){
-            phase_end();
         }
     break;
 } 
@@ -167,13 +164,26 @@ switch(doing){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(doing == ATTACK){
+            <string>draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+var radius = string_width(atq);
+var outCol = c_maroon, inCol = c_red;
+
+if(doing == ATTACK){
     sprite_index = LoktarS;
+    draw_set_color(outCol);
+    draw_circle(bbox_left, bbox_top, radius, false);
+    draw_set_color(inCol);
+    draw_circle(bbox_left, bbox_top, radius-1, false);
+    draw_set_color(c_black);
+    draw_text(bbox_left, bbox_top, atq);
 }else{
     sprite_index = tempHeroS;
 }
 
 draw_self();
+draw_set_color(c_black);
 
 var str = "";
 
@@ -183,32 +193,15 @@ if(casting != noone){
     draw_text(mouse_x, mouse_y, str);
     draw_text(mouse_x, mouse_y + 50, casting.name);
 }
-draw_text(x, bbox_bottom + 30, "HP: " + string(hp) + "/" + string(maxHp));
+var hpText = "";
+if(armour &gt; 0){
+    hpText = "HP: " + string(hp) + "/" + string(maxHp) + " + " + string(armour);
+}else{
+    hpText = "HP: " + string(hp) + "/" + string(maxHp);
+}
+draw_text(x, bbox_bottom + 30, hpText);
 draw_text(x, bbox_bottom + 60, "Actions left: " + string(actions));
 draw_text(x, bbox_bottom + 90, "Mana: " + string(mp) + "/" + string(maxMp));
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>visualize_grid(battlefield);
 </string>
           </argument>
         </arguments>

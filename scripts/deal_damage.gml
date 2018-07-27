@@ -6,7 +6,7 @@ if(object_is_ancestor(to.object_index, Creature)){
     to.damageTaken += amount;
     if(to.damageTaken >= to.def) discard(to);
 }
-else if(object_is_ancestor(to.object_index, You)){
+else if(to.object_index == You){
     if(to.armour > 0){
         to.armour -= amount;
         if(to.armour < 0){

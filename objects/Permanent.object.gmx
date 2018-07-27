@@ -39,6 +39,42 @@ mouseIn = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var n = sqrt(dungeonSize);
+
+if(status == FACEDOWN or status == REVEALED){
+    visible = true;
+    //x = BFIELD_LEFT + gridx * ((BFIELD_WIDTH) / (n - 1));
+    //y = BFIELD_TOP + gridy * ((BFIELD_HEIGHT) / (n - 1));
+    x = BFIELD_LEFT + gridx * ((BFIELD_WIDTH) / (n));
+    y = BFIELD_TOP + gridy * ((BFIELD_HEIGHT) / (n));
+
+}else{
+    visible = false;
+    x = 0;
+    y = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="11">
       <action>
         <libid>1</libid>
@@ -119,6 +155,7 @@ mouseIn = 0;
             case PL_MAIN:
                 var targ = casting.thisTargets;
                 var result = basicValidate(targ, other.id);
+                show_message(result);
                 if(!result) {display_error("invalidTarget"); cancel();}
                 targetArray[targetCount++] = other.id;
                 if(targetCount == casting.maxTargets){
@@ -180,25 +217,13 @@ mouseIn = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var n = sqrt(dungeonSize);
-
-draw_set_halign(fa_center);
+            <string>draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-
-if(status == FACEDOWN or status == REVEALED){
-    visible = true;
-    x = BFIELD_LEFT + gridx * ((BFIELD_WIDTH) / n);
-    y = BFIELD_TOP + gridy * ((BFIELD_HEIGHT) / n);
-}else{
-    visible = false;
-    x = 0;
-    y = 0;
-}
 
 if(debug == true and status == REVEALED){
     draw_text(x + 20, y - 80, name);
     mouseIn++;
-    if(mouseIn == room_speed*2){
+    if(mouseIn == floor(room_speed*1.5)){
         show_message_async(description);
     }
 }else{

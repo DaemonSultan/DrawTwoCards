@@ -3,7 +3,7 @@
 
 switch(phase){
     case INITIATE: // init Dungeon
-        initiate_dungeon(3); // 3 is n; and is imsi
+        initiate_dungeon(4); // 3 is n; and is imsi
         phase = PL_UPKEEP;
         phase_start();
     break;

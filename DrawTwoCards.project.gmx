@@ -142,8 +142,8 @@
       <script>scripts\shuffle_deck.gml</script>
       <script>scripts\shuffle_card.gml</script>
       <script>scripts\search_blank.gml</script>
-      <script>scripts\reset.gml</script>
       <script>scripts\persist.gml</script>
+      <script>scripts\reset.gml</script>
     </scripts>
     <scripts name="scripts_readFiles">
       <script>scripts\get_attribute.gml</script>

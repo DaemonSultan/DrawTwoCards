@@ -43,6 +43,7 @@
             <kind>1</kind>
             <string>//trap activation
 with(You){
+    ef_number(x, y, c_black, armour);
     armour = 0;
 }
 </string>

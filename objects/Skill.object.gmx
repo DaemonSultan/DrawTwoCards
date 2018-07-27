@@ -25,35 +25,41 @@
       </action>
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
+        <id>601</id>
+        <kind>0</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_execute_script</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>//isValid
-affinity = PLAYER;
-type = SKILL;
-
-var ROW = find_header(PlayerDB, object_get_name(object_index));
-
-name = PlayerDB[# NAME, ROW];
-description = PlayerDB[# DESCRIPTION, ROW];
-
-color = get_color(object_get_name(object_index));
-
-attribute = get_attribute(PlayerDB[# ATTRIBUTE, ROW]);
-thisTargets = get_attribute(PlayerDB[# TARGETS, ROW]);
-maxTargets = real(PlayerDB[# MAXTARGETS, ROW]);
-</string>
+            <kind>9</kind>
+            <script>reset</script>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>self.id</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>

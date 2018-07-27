@@ -42,8 +42,8 @@
           <argument>
             <kind>1</kind>
             <string>//trap activation
-for(var i = 0; i &lt; ds_list_size(faceDownList); i++){
-    var current = faceDownList[|i];
+for(var i = 0; i &lt; ds_list_size(revealedList); i++){
+    var current = revealedList[|i];
     if(current.type == CREATURE) current.atq++;   
 }
 </string>

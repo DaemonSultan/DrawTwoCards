@@ -42,7 +42,7 @@ switch(phase){
         if!(size > 0) break;
         for(var i = 0; i < size; i++){
             var enemy = revealedList[|i];
-            if(enemy.affinity != DUNGEON) continue;
+            if(enemy.object_index == 0 or enemy.affinity != DUNGEON) continue;
             if(enemy.type == CREATURE){
                 with(enemy) creature_attack();
             }
@@ -54,7 +54,7 @@ switch(phase){
     case DN_END:
         var rsize = ds_list_size(revealedList);
         var fsize = ds_list_size(faceDownList);
-        if(rsize + fsize < ceil(dungeonSize / 2)){
+        if(rsize + fsize < floor(dungeonSize / 2)){
             var iter = dungeonSize - rsize - fsize;
             for(var i = 0; i < iter; i++){
                 set();
