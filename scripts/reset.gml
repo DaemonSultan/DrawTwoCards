@@ -13,8 +13,7 @@ var parent = object_get_parent(card.object_index);
 switch(parent){
     case Creature: reset_creature(card); break;
     case Trap: reset_trap(card); break;
-    case Skill: reset_skill(card); break;
-    case Spell: reset_spell(card); break;
+    case Skell: reset_skell(card); break;
 }
 
 #define reset_creature
@@ -53,10 +52,10 @@ with(argument0){
     attribute = get_attribute(DungeonDB[# ATTRIBUTE, ROW]);
 }
 
-#define reset_skill
+#define reset_skell
 with(argument0){
     affinity = PLAYER;
-    type = SKILL;
+    count = 0;
     
     var ROW = find_header(PlayerDB, object_get_name(object_index));
     
@@ -64,26 +63,17 @@ with(argument0){
     description = PlayerDB[# DESCRIPTION, ROW];
     
     color = get_color(object_get_name(object_index));
-    
-    attribute = get_attribute(PlayerDB[# ATTRIBUTE, ROW]);
-    thisTargets = get_attribute(PlayerDB[# TARGETS, ROW]);
-    maxTargets = real(PlayerDB[# MAXTARGETS, ROW]);
-}
-
-#define reset_spell
-with(argument0){
-    affinity = PLAYER;
-    type = SPELL;
-    
-    var ROW = find_header(PlayerDB, object_get_name(object_index));
-    
-    name = PlayerDB[# NAME, ROW];
-    description = PlayerDB[# DESCRIPTION, ROW];
-    
-    color = get_color(object_get_name(object_index));
-    costType = constant(PlayerDB[# COSTTYPE, ROW]);
-    cost = real(PlayerDB[# COST, ROW]);
-    
+    var ct = constant(PlayerDB[# COSTTYPE, ROW]);
+    switch(ct){
+        default:
+            costType = ct;
+            cost = real(PlayerDB[# COST, ROW]);
+            type = SPELL;
+        break;
+        case NONE:
+            type = SKILL;
+        break;
+    }
     attribute = get_attribute(PlayerDB[# ATTRIBUTE, ROW]);
     thisTargets = get_attribute(PlayerDB[# TARGETS, ROW]);
     maxTargets = real(PlayerDB[# MAXTARGETS, ROW]);

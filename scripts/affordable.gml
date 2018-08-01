@@ -5,9 +5,9 @@
 var spell = argument0;
 if(spell.type == SPELL){
     switch(spell.costType){
-        case MANA: if(spell.cost > mp) return "cantAfford";
-        case HEALTH: if(spell.cost > hp) return "cantAfford";
-        case ATQ: if(spell.cost > atq) return "cantAfford";
+        case MANA: if(spell.cost > mp) return "cantAfford"; break;
+        case HEALTH: if(spell.cost > hp) return "cantAfford"; break;
+        case ATQ: if(spell.cost > atq) return "cantAfford"; break;
     }
 }
 if(actions <= 0) return "noActions";

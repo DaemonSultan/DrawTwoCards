@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>Skill</parentName>
+  <parentName>Skell</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -24,7 +24,7 @@
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="7" enumb="11">
+    <event eventtype="7" enumb="15">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -41,23 +41,42 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Resolve
+            <string>///RESOLVE_ONCE
+//gain two maximum mp.
 
-with(You){/*
-    var count = 0;
-    
-    do{
-
-        
-        count++;
-    }
-    until(count &lt; other.maxTargets);*/
+with(You){
     maxMp += 2;
 }
 </string>
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///RESOLVE_EACH
+//do nothing.
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>604</id>

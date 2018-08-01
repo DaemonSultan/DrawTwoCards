@@ -202,8 +202,7 @@
     <objects name="Cards">
       <object>objects\Creature</object>
       <object>objects\Trap</object>
-      <object>objects\Skill</object>
-      <object>objects\Spell</object>
+      <object>objects\Skell</object>
       <object>objects\Neutral</object>
       <objects name="ActualCards">
         <objects name="Noncollectible">
@@ -261,7 +260,7 @@
     <room>rooms\InitRoom</room>
     <room>rooms\DungeonRoom</room>
   </rooms>
-  <constants number="86">
+  <constants number="89">
     <constant name="___PHASES___">________</constant>
     <constant name="INITIATE">-1</constant>
     <constant name="PL_UPKEEP">0</constant>
@@ -348,6 +347,9 @@
     <constant name="TR_CREATURE">2</constant>
     <constant name="TR_TRAP">4</constant>
     <constant name="TR_SKELL">8</constant>
+    <constant name="___RSLTION___">________</constant>
+    <constant name="RESOLVE_EACH">3</constant>
+    <constant name="RESOLVE_ONCE">5</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

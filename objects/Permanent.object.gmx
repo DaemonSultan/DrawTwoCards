@@ -155,8 +155,8 @@ if(status == FACEDOWN or status == REVEALED){
             case PL_MAIN:
                 var targ = casting.thisTargets;
                 var result = basicValidate(targ, other.id);
-                show_message(result);
-                if(!result) {display_error("invalidTarget"); cancel();}
+                //show_message(result);
+                if(!result) {display_error("invalidTarget"); cancel(); exit;}
                 targetArray[targetCount++] = other.id;
                 if(targetCount == casting.maxTargets){
                     with(casting){
